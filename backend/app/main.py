@@ -1,11 +1,13 @@
 
+
 from fastapi import FastAPI
 
+
 app = FastAPI(
-    title="AI-Powered Farmer Business Growth API",
+    title="AI-Powered Farmer Business Growth",
     description=(
-        "AI-powered agriculture and agri-business "
-        "decision-support system."
+        "Agriculture and agri-business decision-support "
+        "application."
     ),
     version="0.1.0",
 )
@@ -14,7 +16,7 @@ app = FastAPI(
 @app.get("/")
 def root():
     return {
-        "message": "AI-Powered Farmer Business Growth API",
+        "project": "AI-Powered Farmer Business Growth",
         "status": "running",
         "version": "0.1.0",
     }
@@ -25,3 +27,4 @@ def health_check():
     return {
         "status": "healthy"
     }
+

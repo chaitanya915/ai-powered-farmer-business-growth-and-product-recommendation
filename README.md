@@ -1,34 +1,46 @@
+````markdown
 # AI-POWERED FARMER BUSINESS GROWTH AND PRODUCT RECOMMENDATION SYSTEM
+
+## Project
+
+**AI-Powered Farmer Business Growth and Product Recommendation System**
+
+Repository:
+
+`ai-powered-farmer-business-growth`
 
 ## Overview
 
-The AI-Powered Farmer Business Growth and Product Recommendation System is a full-stack agriculture and agri-business decision-support application.
+This project is an agriculture and agri-business decision-support application designed to help farmers and agri-entrepreneurs identify opportunities for converting agricultural raw materials into value-added products.
 
-The system helps farmers and agri-entrepreneurs identify opportunities for converting agricultural raw materials into value-added products.
-
-### Example
+Example:
 
 ```text
 Mango
-  ↓
-Pulp
-Juice
-Candy
-Pickle
-```
+   |
+   +----> Pulp
+   |
+   +----> Juice
+   |
+   +----> Candy
+   |
+   +----> Pickle
+````
 
-## Main Objectives
+The final system will analyze agricultural, market, supplier, processing, demand and pricing information to generate explainable business recommendations.
 
-The system analyzes:
+## Project Objectives
 
-* Raw material availability
+The planned system will help users analyze:
+
+* Agricultural raw materials
 * Raw material quantity
 * Location
 * Budget
 * Season
 * Agricultural production
 * Mandi prices
-* Demand
+* Market demand
 * Processing costs
 * Suppliers
 * Markets
@@ -39,23 +51,21 @@ The system analyzes:
 * ROI
 * Business risk
 
-The application then generates an explainable business recommendation.
-
-## User Roles
+## Planned User Roles
 
 ### Farmer
 
-Farmers can analyze their agricultural raw materials and identify suitable value-added products.
+Farmers will be able to evaluate value-added opportunities for agricultural raw materials.
 
 ### Agri-Entrepreneur
 
-Agri-entrepreneurs can evaluate processing and market opportunities based on their budget, production capacity and business preferences.
+Agri-entrepreneurs will be able to evaluate agricultural processing and market opportunities.
 
 ### Admin
 
-Administrators manage application data, users, markets, suppliers, datasets and ML model monitoring.
+Administrators will manage application data, datasets and system monitoring.
 
-## Technology Stack
+## Planned Technology Stack
 
 ### Frontend
 
@@ -85,14 +95,15 @@ Administrators manage application data, users, markets, suppliers, datasets and 
 * NumPy
 * Scikit-learn
 * XGBoost
-* TensorFlow/Keras LSTM
+* TensorFlow/Keras
+* LSTM
 * SHAP
 
 ### AI
 
 * RAG
 * LLM-powered AI Assistant
-* Explainable recommendations
+* Explainable AI
 
 ### Reports
 
@@ -104,108 +115,170 @@ Administrators manage application data, users, markets, suppliers, datasets and 
 * Docker Compose
 * GitHub
 
-## High-Level Workflow
+## Planned System Workflow
 
 ```text
 User
- ↓
-Signup / Login
- ↓
+  |
+  v
 Profile
- ↓
-Dashboard
- ↓
+  |
+  v
 Raw Material / Business Input
- ↓
-Hybrid Product Recommendation
- ↓
+  |
+  v
+Product Recommendation
+  |
+  v
 Demand Prediction
- ↓
+  |
+  v
 Price Prediction
- ↓
+  |
+  v
 Supplier Recommendation
- ↓
+  |
+  v
 Market Recommendation
- ↓
+  |
+  v
 Cost Calculation
- ↓
+  |
+  v
 Revenue Calculation
- ↓
-Profit Calculation
- ↓
-ROI
- ↓
+  |
+  v
+Profit / ROI
+  |
+  v
 Risk Analysis
- ↓
+  |
+  v
 Business Score
- ↓
-SHAP Explanation
- ↓
-Final Recommendation
- ↓
-Business Plan PDF
- ↓
-Recommendation History
+  |
+  v
+Explainable Recommendation
+  |
+  v
+Business Plan
 ```
+
+## Phase 1 Scope
+
+Phase 1 only establishes the GitHub-ready project structure.
+
+Implemented:
+
+* Repository structure
+* Backend application entry point
+* Basic health-check API
+* Data directory structure
+* ML model directory structure
+* Notebook placeholders
+* Documentation structure
+* Report structure
+* Environment configuration template
+* Git configuration
+
+Not implemented in Phase 1:
+
+* Authentication
+* Authorization
+* PostgreSQL
+* Database models
+* Dataset processing
+* Machine learning
+* Product recommendation
+* Demand prediction
+* Price prediction
+* Supplier scoring
+* Market recommendation
+* Profit calculations
+* ROI calculations
+* Risk engine
+* SHAP explanations
+* RAG
+* LLM assistant
+* PDF business plans
 
 ## Project Structure
 
 ```text
-ai-powered-farmer-business-growth-and-product-recommendation/
-│
-├── backend/
-├── frontend/
-├── data/
-│   ├── raw/
-│   ├── processed/
-│   └── sample/
-│
-├── ml/
-│   ├── models/
-│   ├── training/
-│   ├── evaluation/
-│   └── artifacts/
-│
-├── reports/
-│   ├── templates/
-│   └── generated/
-│
-├── docs/
-├── tests/
-│
-├── .env.example
-├── .gitignore
-├── docker-compose.yml
-├── LICENSE
-└── README.md
+ai-powered-farmer-business-growth/
+|
+|-- README.md
+|-- LICENSE
+|-- .gitignore
+|-- .env.example
+|-- docker-compose.yml
+|
+|-- backend/
+|   `-- app/
+|       |-- main.py
+|       |-- api/
+|       |-- core/
+|       |-- database/
+|       |-- models/
+|       |-- schemas/
+|       |-- services/
+|       `-- utils/
+|
+|-- frontend/
+|
+|-- data/
+|   |-- mandi_prices/
+|   |-- crop_production/
+|   |-- products/
+|   |-- suppliers/
+|   |-- markets/
+|   |-- processing/
+|   |-- demand/
+|   `-- government/
+|
+|-- models/
+|   |-- demand/
+|   |-- price/
+|   |-- recommendation/
+|   `-- explainability/
+|
+|-- notebooks/
+|   |-- 01_data_exploration.ipynb
+|   |-- 02_data_cleaning.ipynb
+|   |-- 03_demand_xgboost.ipynb
+|   `-- 04_price_lstm.ipynb
+|
+|-- docs/
+`-- reports/
 ```
 
-## Development Principles
-
-This project follows these principles:
+## Development Rules
 
 1. Build incrementally.
 2. Implement only the requested phase.
 3. Preserve existing functionality.
-4. Validate user input.
-5. Never store plain-text passwords.
-6. Never hard-code secrets.
-7. Never invent agricultural prices or supplier information.
-8. Never claim ML accuracy without evaluation.
-9. Keep numerical business calculations deterministic.
-10. Keep LLM-generated explanations separate from numerical calculations.
-11. Implement backend authorization.
-12. Maintain consistent frontend, backend and database naming.
-13. Keep APIs documented.
-14. Keep the frontend responsive.
-15. Clearly document assumptions.
+4. Do not overwrite working code unnecessarily.
+5. Never hard-code passwords or secrets.
+6. Never store plain-text passwords.
+7. Never invent real agricultural prices.
+8. Never invent supplier information.
+9. Never claim ML accuracy without evaluation.
+10. Numerical business calculations must use deterministic application logic.
+11. LLM output must not invent numerical results.
+12. Validate user inputs.
+13. Implement authorization on the backend.
+14. Maintain consistent naming across frontend, backend and database.
+15. Keep APIs documented.
+16. Keep the frontend responsive.
+17. Clearly state assumptions when required.
+18. Do not implement future phases prematurely.
 
 ## Development Status
 
 Current phase:
 
-```text
-PHASE 1 — Repository and Project Initialization
-```
+**PHASE 1 — GitHub Repository and Project Initialization**
 
-Future components will be implemented incrementally.
+Future functionality will be implemented incrementally in subsequent phases.
+
+```
+```
