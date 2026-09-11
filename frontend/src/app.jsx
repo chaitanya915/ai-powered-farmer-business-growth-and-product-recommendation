@@ -7,150 +7,159 @@ import {
 
 import { AuthProvider } from "./context/AuthContext";
 
+import Welcome from "./pages/Welcome";
+import About from "./pages/About";
+import HowItWorks from "./pages/HowItWorks";
+
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+
 import RoleRedirect from "./pages/RoleRedirect";
 import FarmerDashboard from "./pages/FarmerDashboard";
 import BusinessDashboard from "./pages/BusinessDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import Unauthorized from "./pages/Unauthorized";
+
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import ChangePassword from "./pages/ChangePassword";
 import Settings from "./pages/Settings";
-import ProtectedRoute from "./routes/ProtectedRoute";
 
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+
         <Routes>
 
-  <Route
-    path="/login"
-    element={<Login />}
-  />
+          {/* Public pages */}
 
-  <Route
-    path="/signup"
-    element={<Signup />}
-  />
+          <Route
+            path="/"
+            element={<Welcome />}
+          />
 
-  <Route
-    path="/dashboard"
-    element={<RoleRedirect />}
-  />
+          <Route
+            path="/about"
+            element={<About />}
+          />
 
-  <Route
-    path="/unauthorized"
-    element={<Unauthorized />}
-  />
+          <Route
+            path="/how-it-works"
+            element={<HowItWorks />}
+          />
 
+          <Route
+            path="/login"
+            element={<Login />}
+          />
 
-  {/* Authenticated profile routes */}
+          <Route
+            path="/signup"
+            element={<Signup />}
+          />
 
-  <Route element={<ProtectedRoute />}>
+          <Route
+            path="/unauthorized"
+            element={<Unauthorized />}
+          />
 
-    <Route
-      path="/profile"
-      element={<Profile />}
-    />
+          {/* Role-based dashboard redirect */}
 
-    <Route
-      path="/profile/edit"
-      element={<EditProfile />}
-    />
+          <Route
+            element={<ProtectedRoute />}
+          >
+            <Route
+              path="/dashboard"
+              element={<RoleRedirect />}
+            />
 
-    <Route
-      path="/profile/change-password"
-      element={<ChangePassword />}
-    />
+            {/* Common authenticated pages */}
 
-    <Route
-      path="/settings"
-      element={<Settings />}
-    />
+            <Route
+              path="/profile"
+              element={<Profile />}
+            />
 
-  </Route>
+            <Route
+              path="/profile/edit"
+              element={<EditProfile />}
+            />
 
+            <Route
+              path="/profile/change-password"
+              element={<ChangePassword />}
+            />
 
-  {/* Farmer */}
+            <Route
+              path="/settings"
+              element={<Settings />}
+            />
+          </Route>
 
-  <Route
-    element={
-      <ProtectedRoute
-        allowedRoles={["FARMER"]}
-      />
-    }
-  >
-    <Route
-      path="/farmer/dashboard"
-      element={<FarmerDashboard />}
-    />
-  </Route>
+          {/* Farmer */}
 
+          <Route
+            element={
+              <ProtectedRoute
+                allowedRoles={["FARMER"]}
+              />
+            }
+          >
+            <Route
+              path="/farmer/dashboard"
+              element={<FarmerDashboard />}
+            />
+          </Route>
 
-  {/* Agri-Entrepreneur */}
+          {/* Agri-Entrepreneur */}
 
-  <Route
-    element={
-      <ProtectedRoute
-        allowedRoles={[
-          "AGRI_ENTREPRENEUR",
-        ]}
-      />
-    }
-  >
-    <Route
-      path="/business/dashboard"
-      element={<BusinessDashboard />}
-    />
-  </Route>
+          <Route
+            element={
+              <ProtectedRoute
+                allowedRoles={[
+                  "AGRI_ENTREPRENEUR",
+                ]}
+              />
+            }
+          >
+            <Route
+              path="/business/dashboard"
+              element={<BusinessDashboard />}
+            />
+          </Route>
 
+          {/* Admin */}
 
-  {/* Admin */}
+          <Route
+            element={
+              <ProtectedRoute
+                allowedRoles={["ADMIN"]}
+              />
+            }
+          >
+            <Route
+              path="/admin/dashboard"
+              element={<AdminDashboard />}
+            />
+          </Route>
 
-  <Route
-    element={
-      <ProtectedRoute
-        allowedRoles={["ADMIN"]}
-      />
-    }
-  >
-    <Route
-      path="/admin/dashboard"
-      element={<AdminDashboard />}
-    />
-  </Route>
+          {/* Fallback */}
 
-</Routes>
-        <Route
-  element={<ProtectedRoute />}
-/>
-<Route element={<ProtectedRoute />}>
+          <Route
+            path="*"
+            element={
+              <Navigate
+                to="/"
+                replace
+              />
+            }
+          />
 
-  <Route
-    path="/profile"
-    element={<Profile />}
-  />
+        </Routes>
 
-  <Route
-    path="/profile/edit"
-    element={<EditProfile />}
-  />
-
-  <Route
-    path="/profile/change-password"
-    element={<ChangePassword />}
-  />
-
-  <Route
-    path="/settings"
-    element={<Settings />}
-  />
-
-</Route>
       </AuthProvider>
     </BrowserRouter>
   );
