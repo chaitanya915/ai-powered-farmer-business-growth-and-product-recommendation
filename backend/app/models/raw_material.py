@@ -1,11 +1,17 @@
 from __future__ import annotations
 
 from decimal import Decimal
+from typing import TYPE_CHECKING
 
 from sqlalchemy import Integer, Numeric, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models.base import Base, TimestampMixin
+
+if TYPE_CHECKING:
+    from app.models.market_price import MarketPrice
+    from app.models.product_mapping import ProductMapping
+    from app.models.supplier import Supplier
 
 
 class RawMaterial(Base, TimestampMixin):

@@ -9,7 +9,7 @@ from app.models.market_price import MarketPrice
 from app.models.model_prediction import ModelPrediction
 from app.models.processing_cost import ProcessingCost
 from app.models.product import Product
-from app.models.product_mapping import ProductMapping
+from app.models.product_mapping import Product_MMapping
 from app.models.raw_material import RawMaterial
 from app.models.recommendation import Recommendation
 from app.models.recommendation_history import RecommendationHistory

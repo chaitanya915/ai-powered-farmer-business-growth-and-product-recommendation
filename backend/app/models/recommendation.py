@@ -1,11 +1,17 @@
 from __future__ import annotations
 
 from decimal import Decimal
+from typing import TYPE_CHECKING
 
 from sqlalchemy import ForeignKey, Integer, Numeric, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models.base import Base, TimestampMixin
+
+if TYPE_CHECKING:
+    from app.models.product import Product
+    from app.models.recommendation_history import RecommendationHistory
+    from app.models.user import User
 
 
 class Recommendation(Base, TimestampMixin):
@@ -69,7 +75,7 @@ class Recommendation(Base, TimestampMixin):
         back_populates="recommendations",
     )
 
-    product: Mapped["Product"] = relationship(
+    product: Mapped["Product"] = relationship( # pyright: ignore[reportUndefinedVariable]
         "Product",
         back_populates="recommendations",
     )

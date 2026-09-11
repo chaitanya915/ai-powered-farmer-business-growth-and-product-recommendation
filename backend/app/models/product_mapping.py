@@ -1,14 +1,19 @@
 from __future__ import annotations
 
 from decimal import Decimal
+from typing import TYPE_CHECKING
 
 from sqlalchemy import ForeignKey, Integer, Numeric
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models.base import Base, TimestampMixin
 
+if TYPE_CHECKING:
+    from app.models.product import Product
+    from app.models.raw_material import RawMaterial
 
-class ProductMapping(Base, TimestampMixin):
+
+class Product_MMapping(Base, TimestampMixin):
     __tablename__ = "product_mappings"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)

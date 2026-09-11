@@ -3,10 +3,16 @@ from __future__ import annotations
 from datetime import date
 from decimal import Decimal
 
+from typing import TYPE_CHECKING
+
 from sqlalchemy import Date, ForeignKey, Integer, Numeric, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models.base import Base, TimestampMixin
+
+if TYPE_CHECKING:
+    from app.models.market import Market
+    from app.models.raw_material import RawMaterial
 
 
 class MarketPrice(Base, TimestampMixin):

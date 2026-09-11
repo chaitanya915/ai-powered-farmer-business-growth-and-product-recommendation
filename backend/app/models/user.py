@@ -1,11 +1,20 @@
 from __future__ import annotations
 
 from datetime import datetime
+from typing import TYPE_CHECKING
 
 from sqlalchemy import Boolean, DateTime, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models.base import Base, TimestampMixin
+
+if TYPE_CHECKING:
+    from app.models.admin_activity_log import AdminActivityLog
+    from app.models.business_report import BusinessReport
+    from app.models.chat_history import ChatHistory
+    from app.models.recommendation import Recommendation
+    from app.models.recommendation_history import RecommendationHistory
+    from app.models.user_profile import UserProfile
 
 
 class User(Base, TimestampMixin):

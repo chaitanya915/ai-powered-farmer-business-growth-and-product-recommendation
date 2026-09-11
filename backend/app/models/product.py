@@ -1,9 +1,19 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from sqlalchemy import Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models.base import Base, TimestampMixin
+
+if TYPE_CHECKING:
+    from app.models.demand_history import DemandHistory
+    from app.models.market import Market
+    from app.models.model_prediction import ModelPrediction
+    from app.models.processing_cost import ProcessingCost
+    from app.models.product_mapping import ProductMapping
+    from app.models.recommendation import Recommendation
 
 
 class Product(Base, TimestampMixin):
